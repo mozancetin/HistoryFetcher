@@ -71,11 +71,12 @@ namespace HistoryFetcher
                 if (string.IsNullOrWhiteSpace(title)) { return false; }
                 foreach(string word in titleSearchBox.Items)
                 {
-                    if (!title.ToLower().Contains(word.ToLower()))
+                    if (title.ToLower().Contains(word.ToLower()))
                     {
-                        return false;
+                        return true;
                     }
                 }
+                return false;
             }
 
             if (urlSearchBox.Items.Count > 0)
@@ -83,11 +84,12 @@ namespace HistoryFetcher
                 if (string.IsNullOrWhiteSpace(url)) { return false; }
                 foreach (string word in urlSearchBox.Items)
                 {
-                    if (!url.ToLower().Contains(word.ToLower()))
+                    if (url.ToLower().Contains(word.ToLower()))
                     {
-                        return false;
+                        return true;
                     }
                 }
+                return false;
             }
 
             if (banTitleBox.Items.Count > 0)
