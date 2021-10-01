@@ -298,6 +298,8 @@ namespace HistoryFetcher
                     string jsonString = JsonSerializer.Serialize(allItems, options);
                     File.WriteAllText(path, jsonString);
                 }
+
+                MessageBox.Show("Successfully saved.");
             }
         }
     }

@@ -91,25 +91,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetailsWindow.cs">
+    <Compile Include="Windows\DetailsWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetailsWindow.Designer.cs">
+    <Compile Include="Windows\DetailsWindow.Designer.cs">
       <DependentUpon>DetailsWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="Windows\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="Windows\Menu.Designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DetailsWindow.resx">
+    <EmbeddedResource Include="Windows\DetailsWindow.resx">
       <DependentUpon>DetailsWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
+    <EmbeddedResource Include="Windows\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
