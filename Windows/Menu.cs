@@ -64,6 +64,14 @@ namespace HistoryFetcher
             return new DateTime(1601, 1, 1).AddMilliseconds(double.Parse(timestamp) / 1000);
         }
 
+        private string WebkitFromDate(DateTime date)
+        {
+            string milliseconds = ((date.AddHours(-3) - new DateTime(1601, 1, 1)).TotalMilliseconds * 1000).ToString();
+            string[] fromSplit = milliseconds.Replace("E+", ".").Split('.');
+            int power = Convert.ToInt32(fromSplit[1]);
+            return fromSplit[0].Replace(",", "") + new string('0', power);
+        }
+
         private bool Control(string title, string url) 
         {
             if (titleSearchBox.Items.Count > 0)
@@ -169,7 +177,7 @@ namespace HistoryFetcher
                     connection.Open();
 
                     var command = connection.CreateCommand();
-                    command.CommandText = "SELECT url, last_visit_time, title FROM urls";
+                    command.CommandText = "SELECT url, last_visit_time, title, id FROM urls";
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -180,8 +188,9 @@ namespace HistoryFetcher
                             {
                                 string url = reader.GetString(0);
                                 string title = reader.GetString(2);
+                                int ID = Convert.ToInt32(reader.GetString(3));
                                 if (Control(title, url))
-                                    allItems.Add(new Item() { title = title, url = url, date = lV });
+                                    allItems.Add(new Item() { ID = ID, title = title, url = url, date = lV, TotalMilliseconds = lastVisit });
                             }
                         }
                     }

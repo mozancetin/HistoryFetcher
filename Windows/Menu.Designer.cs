@@ -65,9 +65,9 @@ namespace HistoryFetcher
             // 
             // FindButton
             // 
-            this.FindButton.Location = new System.Drawing.Point(1031, 626);
+            this.FindButton.Location = new System.Drawing.Point(1031, 620);
             this.FindButton.Name = "FindButton";
-            this.FindButton.Size = new System.Drawing.Size(104, 43);
+            this.FindButton.Size = new System.Drawing.Size(107, 49);
             this.FindButton.TabIndex = 0;
             this.FindButton.Text = "Find";
             this.FindButton.UseVisualStyleBackColor = true;
@@ -80,6 +80,7 @@ namespace HistoryFetcher
             this.columnUrl,
             this.columnDate});
             this.ItemBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ItemBox.FullRowSelect = true;
             this.ItemBox.HideSelection = false;
             this.ItemBox.Location = new System.Drawing.Point(12, 12);
             this.ItemBox.MultiSelect = false;
@@ -344,9 +345,9 @@ namespace HistoryFetcher
             // button9
             // 
             this.button9.Enabled = false;
-            this.button9.Location = new System.Drawing.Point(1148, 626);
+            this.button9.Location = new System.Drawing.Point(1145, 620);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(104, 43);
+            this.button9.Size = new System.Drawing.Size(107, 49);
             this.button9.TabIndex = 26;
             this.button9.Text = "Save";
             this.button9.UseVisualStyleBackColor = true;
