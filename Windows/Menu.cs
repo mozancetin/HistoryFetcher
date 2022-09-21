@@ -74,6 +74,7 @@ namespace HistoryFetcher
 
         private bool Control(string title, string url) 
         {
+            bool overall = false;
             if (titleSearchBox.Items.Count > 0)
             {
                 if (string.IsNullOrWhiteSpace(title)) { return false; }
@@ -81,10 +82,9 @@ namespace HistoryFetcher
                 {
                     if (title.ToLower().Contains(word.ToLower()))
                     {
-                        return true;
+                        overall = true;
                     }
                 }
-                return false;
             }
 
             if (urlSearchBox.Items.Count > 0)
@@ -94,10 +94,9 @@ namespace HistoryFetcher
                 {
                     if (url.ToLower().Contains(word.ToLower()))
                     {
-                        return true;
+                        overall = true;
                     }
                 }
-                return false;
             }
 
             if (banTitleBox.Items.Count > 0)
@@ -124,7 +123,7 @@ namespace HistoryFetcher
                 }
             }
 
-            return true;
+            return overall;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -189,8 +188,8 @@ namespace HistoryFetcher
                                 string url = reader.GetString(0);
                                 string title = reader.GetString(2);
                                 int ID = Convert.ToInt32(reader.GetString(3));
-                                if (Control(title, url))
-                                    allItems.Add(new Item() { ID = ID, title = title, url = url, date = lV, TotalMilliseconds = lastVisit });
+                                if (Control(title, url) && allItems.Where(i => i.title == title).Count() == 0) { allItems.Add(new Item() { ID = ID, title = title, url = url, date = lV, TotalMilliseconds = lastVisit }); }
+                                    
                             }
                         }
                     }
@@ -291,7 +290,7 @@ namespace HistoryFetcher
                     foreach(ListViewItem i in ItemBox.Items)
                     {
                         Item item = (Item)i.Tag;
-                        File.AppendAllText(path, item.title + "\t Link: " + item.url + "\n");
+                        File.AppendAllText(path, item.title + "\t Erişim Adresi: " + item.url + "\n");
                     }
                 }
                 else if (ext == "json")
